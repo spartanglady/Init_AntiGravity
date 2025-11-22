@@ -1,0 +1,152 @@
+.demo-section {
+    padding: 6rem 2rem;
+    background: linear-gradient(180deg, var(--color-bg) 0%, var(--color-surface) 100%);
+}
+
+.demo-container {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    max-width: 1200px;
+    margin: 0 auto;
+    gap: 4rem;
+}
+
+.demo-text {
+    flex: 1;
+}
+
+.demo-title {
+    font-size: 3rem;
+    margin-bottom: 1.5rem;
+}
+
+.demo-description {
+    font-size: 1.2rem;
+    color: #a0a0b0;
+    line-height: 1.6;
+}
+
+.chat-interface {
+    flex: 1;
+    background: #0f1125;
+    border-radius: 12px;
+    box-shadow: 0 20px 50px rgba(0, 0, 0, 0.5);
+    border: 1px solid rgba(255, 255, 255, 0.1);
+    overflow: hidden;
+    max-width: 500px;
+    height: 400px;
+    display: flex;
+    flex-direction: column;
+}
+
+.chat-header {
+    background: #1a1d3a;
+    padding: 1rem;
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+    border-bottom: 1px solid rgba(255, 255, 255, 0.05);
+}
+
+.dot {
+    width: 12px;
+    height: 12px;
+    border-radius: 50%;
+}
+
+.red {
+    background: #ff5f56;
+}
+
+.yellow {
+    background: #ffbd2e;
+}
+
+.green {
+    background: #27c93f;
+}
+
+.chat-title {
+    margin-left: 1rem;
+    font-family: var(--font-mono);
+    font-size: 0.9rem;
+    color: #888;
+}
+
+.chat-body {
+    padding: 1.5rem;
+    flex: 1;
+    overflow-y: auto;
+    display: flex;
+    flex-direction: column;
+    gap: 1rem;
+}
+
+.message {
+    display: flex;
+    align-items: flex-end;
+    gap: 0.8rem;
+    max-width: 85%;
+    animation: fadeIn 0.3s ease;
+}
+
+.message.user {
+    align-self: flex-end;
+    flex-direction: row-reverse;
+}
+
+.message.system {
+    align-self: center;
+    font-size: 0.8rem;
+    color: var(--color-primary);
+    margin-top: 1rem;
+    border: 1px dashed var(--color-primary);
+    padding: 0.5rem 1rem;
+    border-radius: 20px;
+}
+
+.message-content {
+    padding: 0.8rem 1.2rem;
+    border-radius: 18px;
+    font-size: 0.95rem;
+    line-height: 1.4;
+}
+
+.message.agent .message-content {
+    background: var(--color-surface);
+    border-bottom-left-radius: 4px;
+    border: 1px solid rgba(255, 255, 255, 0.05);
+}
+
+.message.user .message-content {
+    background: var(--color-secondary);
+    color: #fff;
+    border-bottom-right-radius: 4px;
+}
+
+.avatar {
+    font-size: 1.2rem;
+}
+
+@keyframes fadeIn {
+    from {
+        opacity: 0;
+        transform: translateY(10px);
+    }
+
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+@media (max-width: 768px) {
+    .demo-container {
+        flex-direction: column;
+    }
+
+    .chat-interface {
+        width: 100%;
+    }
+}
