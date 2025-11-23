@@ -2,8 +2,15 @@ import React from 'react';
 import './Hero.css';
 
 const Hero = () => {
+    const scrollToDemo = () => {
+        const element = document.getElementById('demo');
+        if (element) {
+            element.scrollIntoView({ behavior: 'smooth', block: 'start' });
+        }
+    };
+
     return (
-        <section className="hero">
+        <section id="hero" className="hero">
             <div className="hero-content">
                 <h1 className="hero-title">
                     The Future of Commerce is <span className="highlight">Agentic</span>
@@ -12,7 +19,7 @@ const Hero = () => {
                     Empowering autonomous agents to discover, negotiate, and transact on your behalf.
                     Welcome to the next evolution of digital exchange.
                 </p>
-                <button className="cta-button">Explore the Revolution</button>
+                <button className="cta-button" onClick={scrollToDemo}>Explore the Revolution</button>
             </div>
             <div className="hero-visual">
                 <div className="orb"></div>

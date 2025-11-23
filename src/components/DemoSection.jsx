@@ -13,24 +13,33 @@ const conversation = [
 const DemoSection = () => {
     const [messages, setMessages] = useState([]);
     const [currentIndex, setCurrentIndex] = useState(0);
+    const [isPlaying, setIsPlaying] = useState(true);
     const chatEndRef = useRef(null);
 
     useEffect(() => {
-        if (currentIndex < conversation.length) {
+        if (currentIndex < conversation.length && isPlaying) {
             const timeout = setTimeout(() => {
                 setMessages((prev) => [...prev, conversation[currentIndex]]);
                 setCurrentIndex((prev) => prev + 1);
             }, 1500); // Delay between messages
             return () => clearTimeout(timeout);
+        } else if (currentIndex >= conversation.length) {
+            setIsPlaying(false);
         }
-    }, [currentIndex]);
+    }, [currentIndex, isPlaying]);
 
     useEffect(() => {
         chatEndRef.current?.scrollIntoView({ behavior: 'smooth' });
     }, [messages]);
 
+    const restartDemo = () => {
+        setMessages([]);
+        setCurrentIndex(0);
+        setIsPlaying(true);
+    };
+
     return (
-        <section className="demo-section">
+        <section id="demo" className="demo-section">
             <div className="demo-container">
                 <div className="demo-text">
                     <h2 className="demo-title">Experience <span className="highlight-text">Agentic Speed</span></h2>
@@ -41,10 +50,19 @@ const DemoSection = () => {
                 </div>
                 <div className="chat-interface">
                     <div className="chat-header">
-                        <div className="dot red"></div>
-                        <div className="dot yellow"></div>
-                        <div className="dot green"></div>
+                        <div className="header-dots">
+                            <div className="dot red"></div>
+                            <div className="dot yellow"></div>
+                            <div className="dot green"></div>
+                        </div>
                         <span className="chat-title">Shopping Agent v2.0</span>
+                        <button
+                            className="restart-button"
+                            onClick={restartDemo}
+                            title="Restart Demo"
+                        >
+                            ↻
+                        </button>
                     </div>
                     <div className="chat-body">
                         {messages.map((msg, index) => (

@@ -30,7 +30,7 @@ const trends = [
 
 const TrendSection = () => {
     return (
-        <section className="trend-section">
+        <section id="trends" className="trend-section">
             <h2 className="section-title">Key Trends in <span className="highlight-text">2025</span></h2>
             <div className="trend-grid">
                 {trends.map((trend) => (
