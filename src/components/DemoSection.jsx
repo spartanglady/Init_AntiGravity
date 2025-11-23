@@ -21,10 +21,11 @@ const DemoSection = () => {
             const timeout = setTimeout(() => {
                 setMessages((prev) => [...prev, conversation[currentIndex]]);
                 setCurrentIndex((prev) => prev + 1);
+                if (currentIndex + 1 >= conversation.length) {
+                    setIsPlaying(false);
+                }
             }, 1500); // Delay between messages
             return () => clearTimeout(timeout);
-        } else if (currentIndex >= conversation.length) {
-            setIsPlaying(false);
         }
     }, [currentIndex, isPlaying]);
 
